@@ -23,7 +23,7 @@ const Fields = () => {
 
     useEffect(() => {
         setQuarterNewReqs(placementsTarget * ratioNewReqs * percentagePlacements / 100)
-    }, [percentagePlacements, ratioNewReqs])
+    }, [placementsTarget, ratioNewReqs, percentagePlacements])
 
     useEffect(() => {
         setWeeklyNewReqs(quarterNewReqs / ratioNewReqs)
@@ -69,84 +69,99 @@ const Fields = () => {
 
 
     return (
-        <div>
-            <div>Q1</div>
-                $<input type="text" 
-                    // value={dollarFormatter(goal)} 
-                    value={goal}
-                    // onChange={(e) => setGoal(parseInt(e.target.value, 10).toLocaleString('en-US'))} 
-                    onChange={(e) => setGoal(e.target.value)}
-                    // onKeyUp={}
-                    pattern="[0-9]+"
-                    data-type="currency" 
-                    placeholder="$150,000"
-                ></input>
-            <div>BD/Full Desk or Recruiter Target</div>
-                <input 
-                    type="number" 
-                    value={placementFee} 
-                    onChange={(e) => setPlacementFee(e.target.value)} 
-                    pattern="[0-9]" 
-                    data-type="currency" 
-                    placeholder="$20,000"
-                />
-                <input 
-                    type="number" 
-                    value={revenue} 
-                    onChange={(e) => setRevenue(e.target.value)} 
-                    pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" 
-                    data-type="currency" 
-                    placeholder="$12,000"
-                />
-                <output type="text">
+        <div className="fieldSection df fdc">
+            <div className="fieldHeader">Q1</div>
+                <div className="field">
+                    <input 
+                        type="text" 
+                        // value={dollarFormatter(goal)} 
+                        value={goal}
+                        // onChange={(e) => setGoal(parseInt(e.target.value, 10).toLocaleString('en-US'))} 
+                        onChange={(e) => setGoal(e.target.value)}
+                        // onKeyUp={}
+                        pattern="[0-9]+"
+                        data-type="currency" 
+                        placeholder="$150,000"
+                    ></input>
+                </div>
+            <div className="fieldHeader">BD/Full Desk or Recruiter Target</div>
+                <div className="field">
+                    <input 
+                        type="number" 
+                        value={placementFee} 
+                        onChange={(e) => setPlacementFee(e.target.value)} 
+                        pattern="[0-9]" 
+                        data-type="currency" 
+                        placeholder="$20,000"
+                    />
+                </div>
+                <div className="field">
+                    <input 
+                        type="number" 
+                        value={revenue} 
+                        onChange={(e) => setRevenue(e.target.value)} 
+                        pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" 
+                        data-type="currency" 
+                        placeholder="$12,000"
+                    />
+                </div>
+                <output className="field" type="text">
                     {(revPercentage === 'NaN%' || revPercentage === '0%') ? null : revPercentage}
                 </output>
-                <output type="text">
+                <output className="field" type="text">
                     {(placementsTarget === 'Infinity' || placementsTarget === 'NaN') ? null : placementsTarget}
                 </output>
-            <div>BD/Full Desk Outcome Metric</div>
-                <input 
-                    type="number" 
-                    value={percentagePlacements} 
-                    placeholder={"100%"}
-                    onChange={(e) => setPercentagePlacements(e.target.value)}
+            <div className="fieldHeader">BD/Full Desk Outcome Metric</div>
+                <div className="field">
+                    <input 
+                        type="number" 
+                        value={percentagePlacements} 
+                        placeholder={"100%"}
+                        onChange={(e) => setPercentagePlacements(e.target.value)}
                     />
-                <input
-                    type="number"
-                    value={ratioNewReqs}
-                    placeholder={"4:1"}
-                    onChange={(e) => setRatioNewReqs(e.target.value)}
-                />
-                <output>
+                </div>
+                <div className="field">
+                    <input 
+                        type="number"
+                        value={ratioNewReqs}
+                        placeholder={"4:1"}
+                        onChange={(e) => setRatioNewReqs(e.target.value)}
+                    />
+                </div>
+                <output className="field">
                     {quarterNewReqs}
                 </output>
-                <output>
+                <output className="field">
                     {weeklyNewReqs}
                 </output>
-            <div>Full Desk or Recruiter Outcome Metric</div>
-                <input
-                    type="number"
-                    value={firstSendRatio}
-                    placeholder={"7:1"}
-                    onChange={(e) => setFirstSendRatio(e.target.value)}
-                ></input>
-                <output>
+            <div className="fieldHeader">Full Desk or Recruiter Outcome Metric</div>
+                <div className="field">
+                    <input 
+                        type="number"
+                        value={firstSendRatio}
+                        placeholder={"7:1"}
+                        onChange={(e) => setFirstSendRatio(e.target.value)}
+                    ></input>
+                </div>
+                <output className="field">
                     {quarterSendOuts}
                 </output>
-                <output>
+                <output className="field">
                     {weeklySendOuts}
                 </output>
-            <div>Full Desk or Recruiter Activity Metric</div>
-                <input
-                    type="number"
-                    value={candidateRatio}
-                    placeholder={"2:1"}
-                    onChange={(e) => setCandidateRatio(e.target.value)}
-                ></input>
-                <output>
+            <div className="fieldHeader">Full Desk or Recruiter Activity Metric</div>
+                <div className="field">
+                    <input 
+                        type="number"
+                        value={candidateRatio}
+                        placeholder={"2:1"}
+                        onChange={(e) => setCandidateRatio(e.target.value)}
+                    ></input>
+                </div>
+                <output className="field">
                     {quarterCandidate}
                 </output>
-                <output>
+                <output className="field">
                     {weeklyCandidate}
                 </output>
         </div>

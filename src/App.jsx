@@ -1,14 +1,12 @@
 import './App.css';
-import Prompts from './components/prompts';
-import Fields from './components/fields';
+import MainBody from './components/mainBody';
 import NavBar from './components/navbar';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App df jcc aic fdc">
       <NavBar/>
-      <Prompts/>
-      <Fields/>
+      <MainBody/>
     </div>
   );
 }
