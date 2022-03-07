@@ -124,15 +124,20 @@ code {
 
 .addQ{
   position: absolute;
-  transform: translate(1670px);
+  transform: translate(1665px);
   font-size: 21px;
   width: 28px;
 }
 
 .subQ{
   position: absolute;
-  transform: translate(1670px, 100%);
+  transform: translate(1665px, 100%);
   font-size: 21px;
   width: 28px;
+}
+
+.screenshot{
+  position: absolute;
+  transform: translate(1580px, -200%)
 }
 
