@@ -2,7 +2,6 @@ import React, {useState, createRef} from "react";
 import Fields from "./fields";
 import Prompts from "./prompts";
 import {useScreenshot, createFileName} from 'use-react-screenshot'
-import html2canvas from 'html2canvas';
 
 const MainBody = () => {
     const [fieldCount, setFieldCount] = useState([1]);

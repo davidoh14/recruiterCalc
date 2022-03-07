@@ -143,10 +143,10 @@ const Fields = ({count}) => {
                     ></input>
                 </div>
                 <output className="field">
-                    {isNaN(quarterSendOuts) ? null : quarterSendOuts}
+                    {isNaN(quarterSendOuts) ? null : Math.round((quarterSendOuts) * 100) / 100}
                 </output>
                 <output className="field">
-                    {isNaN(weeklySendOuts) ? null : weeklySendOuts}
+                    {isNaN(weeklySendOuts) ? null : Math.round((weeklySendOuts) * 100) / 100}
                 </output>
             <div className="fieldHeader">Full Desk or Recruiter Activity Metric</div>
                 <div className="field">
@@ -158,10 +158,10 @@ const Fields = ({count}) => {
                     ></input>
                 </div>
                 <output className="field">
-                    {isNaN(quarterCandidate) ? null : quarterCandidate}
+                    {isNaN(quarterCandidate) ? null : Math.round((quarterCandidate) * 100) / 100}
                 </output>
                 <output className="field">
-                    {isNaN(weeklyCandidate) ? null : weeklyCandidate}
+                    {isNaN(weeklyCandidate) ? null : Math.round((weeklyCandidate) * 100) / 100}
                 </output>
         </div>
         
