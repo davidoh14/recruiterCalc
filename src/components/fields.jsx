@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-const Fields = () => {
+const Fields = ({count}) => {
 
     const [goal, setGoal] = useState('');
     const [placementFee, setPlacementFee] = useState('');
@@ -70,7 +70,7 @@ const Fields = () => {
 
     return (
         <div className="fieldSection df fdc">
-            <div className="fieldHeader">Q1</div>
+            <div className="fieldHeader">{'Q' + `${count}`}</div>
                 <div className="field">
                     <input 
                         type="text" 
@@ -78,7 +78,6 @@ const Fields = () => {
                         value={goal}
                         // onChange={(e) => setGoal(parseInt(e.target.value, 10).toLocaleString('en-US'))} 
                         onChange={(e) => setGoal(e.target.value)}
-                        // onKeyUp={}
                         pattern="[0-9]+"
                         data-type="currency" 
                         placeholder="$150,000"

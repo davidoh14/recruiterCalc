@@ -11,18 +11,16 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.css */ "./src/App.css");
 /* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_App_css__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_prompts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/prompts */ "./src/components/prompts.jsx");
-/* harmony import */ var _components_fields__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/fields */ "./src/components/fields.jsx");
-/* harmony import */ var _components_navbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/navbar */ "./src/components/navbar.jsx");
-
+/* harmony import */ var _components_mainBody__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/mainBody */ "./src/components/mainBody.jsx");
+/* harmony import */ var _components_navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/navbar */ "./src/components/navbar.jsx");
 
 
 
 
 function App() {
   return /*#__PURE__*/React.createElement("div", {
-    className: "App"
-  }, /*#__PURE__*/React.createElement(_components_navbar__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/React.createElement(_components_prompts__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/React.createElement(_components_fields__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+    className: "App df jcc aic fdc"
+  }, /*#__PURE__*/React.createElement(_components_navbar__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/React.createElement(_components_mainBody__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -52,7 +50,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var Fields = function Fields() {
+var Fields = function Fields(_ref) {
+  var count = _ref.count;
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       goal = _useState2[0],
@@ -107,7 +107,7 @@ var Fields = function Fields() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     setQuarterNewReqs(placementsTarget * ratioNewReqs * percentagePlacements / 100);
-  }, [percentagePlacements, ratioNewReqs]);
+  }, [placementsTarget, ratioNewReqs, percentagePlacements]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     setWeeklyNewReqs(quarterNewReqs / ratioNewReqs);
   }, [quarterNewReqs, ratioNewReqs]); // useEffect(() => {
@@ -164,19 +164,28 @@ var Fields = function Fields() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     setWeeklyCandidate(quarterCandidate / 13);
   }, [quarterCandidate]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Q1"), "$", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "fieldSection df fdc"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "fieldHeader"
+  }, 'Q' + "".concat(count)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "text" // value={dollarFormatter(goal)} 
     ,
     value: goal // onChange={(e) => setGoal(parseInt(e.target.value, 10).toLocaleString('en-US'))} 
     ,
     onChange: function onChange(e) {
       return setGoal(e.target.value);
-    } // onKeyUp={}
-    ,
+    },
     pattern: "[0-9]+",
     "data-type": "currency",
     placeholder: "$150,000"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "BD/Full Desk or Recruiter Target"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "fieldHeader"
+  }, "BD/Full Desk or Recruiter Target"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "number",
     value: placementFee,
     onChange: function onChange(e) {
@@ -185,7 +194,9 @@ var Fields = function Fields() {
     pattern: "[0-9]",
     "data-type": "currency",
     placeholder: "$20,000"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "number",
     value: revenue,
     onChange: function onChange(e) {
@@ -194,42 +205,146 @@ var Fields = function Fields() {
     pattern: "^\\$\\d{1,3}(,\\d{3})*(\\.\\d+)?$",
     "data-type": "currency",
     placeholder: "$12,000"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", {
+    className: "field",
     type: "text"
   }, revPercentage === 'NaN%' || revPercentage === '0%' ? null : revPercentage), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", {
+    className: "field",
     type: "text"
-  }, placementsTarget === 'Infinity' || placementsTarget === 'NaN' ? null : placementsTarget), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "BD/Full Desk Outcome Metric"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, placementsTarget === 'Infinity' || placementsTarget === 'NaN' ? null : placementsTarget), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "fieldHeader"
+  }, "BD/Full Desk Outcome Metric"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "number",
     value: percentagePlacements,
     placeholder: "100%",
     onChange: function onChange(e) {
       return setPercentagePlacements(e.target.value);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "number",
     value: ratioNewReqs,
     placeholder: "4:1",
     onChange: function onChange(e) {
       return setRatioNewReqs(e.target.value);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", null, quarterNewReqs), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", null, weeklyNewReqs), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Full Desk or Recruiter Outcome Metric"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", {
+    className: "field"
+  }, quarterNewReqs), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", {
+    className: "field"
+  }, weeklyNewReqs), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "fieldHeader"
+  }, "Full Desk or Recruiter Outcome Metric"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "number",
     value: firstSendRatio,
     placeholder: "7:1",
     onChange: function onChange(e) {
       return setFirstSendRatio(e.target.value);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", null, quarterSendOuts), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", null, weeklySendOuts), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Full Desk or Recruiter Activity Metric"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", {
+    className: "field"
+  }, quarterSendOuts), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", {
+    className: "field"
+  }, weeklySendOuts), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "fieldHeader"
+  }, "Full Desk or Recruiter Activity Metric"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "number",
     value: candidateRatio,
     placeholder: "2:1",
     onChange: function onChange(e) {
       return setCandidateRatio(e.target.value);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", null, quarterCandidate), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", null, weeklyCandidate));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", {
+    className: "field"
+  }, quarterCandidate), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("output", {
+    className: "field"
+  }, weeklyCandidate));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Fields);
+
+/***/ }),
+
+/***/ "./src/components/mainBody.jsx":
+/*!*************************************!*\
+  !*** ./src/components/mainBody.jsx ***!
+  \*************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _fields__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fields */ "./src/components/fields.jsx");
+/* harmony import */ var _prompts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./prompts */ "./src/components/prompts.jsx");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var MainBody = function MainBody() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([1]),
+      _useState2 = _slicedToArray(_useState, 2),
+      fieldCount = _useState2[0],
+      setFieldCount = _useState2[1];
+
+  function addQuarter() {
+    var newFieldCount = [].concat(_toConsumableArray(fieldCount), [fieldCount.at(-1) + 1]);
+    setFieldCount(newFieldCount);
+  }
+
+  function subQuarter() {
+    var newFieldCount = fieldCount.slice(0, -1);
+    setFieldCount(newFieldCount);
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "mainBody darkBlue df fdr"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_prompts__WEBPACK_IMPORTED_MODULE_2__["default"], null), fieldCount.length < 4 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    className: "addQ",
+    onClick: function onClick() {
+      return addQuarter();
+    }
+  }, " + ") : null, fieldCount.length > 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    className: "subQ",
+    onClick: function onClick() {
+      return subQuarter();
+    }
+  }, " - ") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "fieldHalf df fdr"
+  }, fieldCount.map(function (count) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fields__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      count: count
+    });
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MainBody);
 
 /***/ }),
 
@@ -245,7 +360,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var NavBar = function NavBar() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "SUCCESSMETRICS");
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "navBar df"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "success"
+  }, "SUCCESS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "metrics"
+  }, "METRICS"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NavBar);
@@ -264,7 +385,79 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Prompts = function Prompts() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Quarterly Revenue Goal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Target Quarterly Billings Goal (Split Adjusted if you share revenue with BD/AM or Recruiter)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Calculate: # of Placements Required to Reach Quarterly Goal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Average Historical Total Fee Per Placement"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Average Revenue Allocation Per Placement (Split Adjusted)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Average Historical Revenue Percentage Allocation (Split) Per Placement "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Target # of Placements Required During Quarter (Split Adjusted)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Calculate: # of New Req's (Job Order/Searches) Required to Reach Quarterly Goal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Target Percentage of Placements as The BD (Req. Owner)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Your Ratio of New Req's : Placements"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Total # of New Req's Required to Achieve Your Quarterly Goal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Target # of New Req's Required per Week"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Calculate: # of 1st Send Outs (Cand./Client 1st Interview) to Reach Quarterly Goal "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Your Ratio of 1st Send Outs: Placements"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Total # of 1st Send Outs Required to Achieve Your Quarterly Goal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Target # of 1st Send Outs Required per Week"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Calculate: # of Candidate Submissions Required to Reach Quarterly Goal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Your Ratio: Candidate Subs: 1st Send Outs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Total # of Candidate Subs Required to Achieve Your Quarterly Goal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Target # of Candidate Subs Required per Week"));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptHalf df fdc"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "secHeader"
+  }, "Quarterly Revenue Goal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Target Quarterly Billings Goal (Split Adjusted if you share revenue with BD/AM or Recruiter)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "secHeader"
+  }, "Calculate: # of Placements Required to Reach Quarterly Goal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Average Historical Total Fee Per Placement")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Average Revenue Allocation Per Placement (Split Adjusted)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Average Historical Revenue Percentage Allocation (Split) Per Placement")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Target # of Placements Required During Quarter (Split Adjusted)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "secHeader"
+  }, "Calculate: # of New Req's (Job Order/Searches) Required to Reach Quarterly Goal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Target Percentage of Placements as The BD (Req. Owner)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Your Ratio of New Req's : Placements")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Total # of New Req's Required to Achieve Your Quarterly Goal")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Target # of New Req's Required per Week")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "secHeader"
+  }, "Calculate: # of 1st Send Outs (Cand./Client 1st Interview) to Reach Quarterly Goal "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Your Ratio of 1st Send Outs: Placements")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Total # of 1st Send Outs Required to Achieve Your Quarterly Goal")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Target # of 1st Send Outs Required per Week")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "secHeader"
+  }, "Calculate: # of Candidate Submissions Required to Reach Quarterly Goal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Your Ratio: Candidate Subs: 1st Send Outs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Total # of Candidate Subs Required to Achieve Your Quarterly Goal")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "prompt"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "promptText"
+  }, "Target # of Candidate Subs Required per Week")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Prompts);
@@ -30108,18 +30301,7 @@ if (false) {} else {
   \***********************/
 /***/ (function() {
 
-/* body {
-  color: #0c57ad;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-} */
-
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
-
+throw new Error("Module parse failed: Unexpected token (1:5)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> body {\n|   background-color: #0c57ad;\n|   color: white;");
 
 /***/ })
 
