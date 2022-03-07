@@ -11,6 +11,11 @@ code {
     monospace;
 }
 
+.navBar{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
+  font-weight: 50;
+}
+
 .mainBody{
   width: 70vw;
   margin-left: auto;
@@ -49,7 +54,6 @@ code {
 .navBar {
   font-size: 2em;
   padding: .75em;
-  margin-bottom: 1em
 }
 
 .promptHalf{
@@ -59,7 +63,9 @@ code {
 
 .secHeader {
   padding: 1.5em 0em 1em 1.5em;
-  border-bottom: 3px solid #6E7B81;
+  border-bottom: 1px solid #6E7B81;
+  font-weight: 600;
+  letter-spacing: 0.10em;
 }
 
 .prompt{
@@ -67,6 +73,7 @@ code {
   width: 100%;
   height: 1em;
   padding: 1em 0em 1em 0em;
+  font-weight: 200;
 }
 
 .promptText{
@@ -81,13 +88,26 @@ code {
 }
 
 .fieldHeader{
-  padding: 1.5em 0em 1em 1.5em;
-  border-bottom: 3px solid #6E7B81;
+  padding: 1.5em 0em 1em 0em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #6E7B81;
 }
 
 .field{
   display: flex;
   height: 1em;
   padding: 1em 0em 1em 0em;
+  font-weight: 600;
+  color:gold; 
+  letter-spacing: 0.10em;
+}
+
+.success{
+  padding: 0em .1em 0 .1em;
+}
+.metrics{
+  background-color: #F54C08;
+  padding: 0em .1em 0 .1em;
 }
 
