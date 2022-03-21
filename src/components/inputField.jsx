@@ -4,7 +4,7 @@ const InputField = ({ inputState, inputSetState, placeholder, dataType }) => {
     const [isEditing, setIsEditing] = useState(true);
 
     const mounted = useRef(null);
-    let active = document.activeElement;
+    // let active = document.activeElement;
 
     useEffect(() => {
         mounted.current = true;
@@ -23,6 +23,9 @@ const InputField = ({ inputState, inputSetState, placeholder, dataType }) => {
                 return `${number}%`
             case "ratio":
                 return `${number}:1`
+
+            default:
+                break;
         }
     }
 
@@ -45,7 +48,7 @@ const InputField = ({ inputState, inputSetState, placeholder, dataType }) => {
     return (
         <div className="field">
             {
-                (isEditing === true) ? 
+                (isEditing === true || (isEditing === true && inputState === '')) ? 
                     <input
                         autoFocus={mounted.current ? true : false}
                         type="number" 

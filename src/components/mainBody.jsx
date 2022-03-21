@@ -18,11 +18,15 @@ const MainBody = () => {
     return (
         <div className="df fdc">
             <div className="buttons df fdr jcfe">
-                {(fieldCount.length > 1) ? (<button className="subQ fdr" onClick={() => subQuarter()}> - </button>) : null}
-                <div className="df aic jcc pad">
-                    Quarters
-                </div>
-                {(fieldCount.length < 4) ? (<button className="addQ fdr" onClick={() => addQuarter()}> + </button>) : null} 
+                <div className="df aic jcc pad">QUARTERS</div>
+                <button 
+                    className={(fieldCount.length > 1) ? "subQ fdr" : "subQ fdr vh"}
+                    onClick={() => subQuarter()}> - 
+                </button>
+                <button 
+                    className={(fieldCount.length < 4) ? "addQ fdr" : "addQ fdr vh"} 
+                    onClick={() => addQuarter()}> + 
+                </button>
             </div>
             <div className="mainBody darkBlue df fdr">
                 <Prompts/>

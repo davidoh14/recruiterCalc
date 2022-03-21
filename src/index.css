@@ -62,6 +62,10 @@ code {
   padding: 0em 1em 0em 1em;
 }
 
+.vh {
+  visibility: hidden;
+}
+
 .navBar {
   font-size: 2em;
   padding: .75em;
@@ -221,5 +225,6 @@ code {
 
 .screenshot{
   display: flex;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
