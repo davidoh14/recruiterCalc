@@ -113,6 +113,7 @@ const Fields = ({count}) => {
             <div className="fieldHeader nobt">{'Q' + `${count}`}</div>
                 <div className="field">
                     <InputField 
+                        key={count + 1}                     
                         inputState={goal} 
                         inputSetState={setGoal} 
                         placeholder={"$150,000"}
@@ -121,12 +122,14 @@ const Fields = ({count}) => {
                 </div>
             <div className="fieldHeader">BD/Full Desk or Recruiter Target</div>
                 <InputField 
+                    key={count + 2}
                     inputState={placementFee} 
                     inputSetState={setPlacementFee} 
                     placeholder={"$20,000"}
                     dataType={"currency"}
                 />
                 <InputField 
+                    key={count + 3}
                     inputState={revenue} 
                     inputSetState={setRevenue} 
                     placeholder={"$12,000"}
@@ -144,12 +147,14 @@ const Fields = ({count}) => {
                 </div>
             <div className="fieldHeader">BD/Full Desk Outcome Metric</div>
                 <InputField 
+                    key={count + 4}
                     inputState={percentagePlacements} 
                     inputSetState={setPercentagePlacements} 
                     placeholder={"100%"}
                     dataType={"percentage"}
                 />
                 <InputField 
+                    key={count + 5}
                     inputState={ratioNewReqs} 
                     inputSetState={setRatioNewReqs} 
                     placeholder={"4:1"}
@@ -167,6 +172,7 @@ const Fields = ({count}) => {
                 </div>
             <div className="fieldHeader">Full Desk or Recruiter Outcome Metric</div>
                 <InputField 
+                    key={count + 6}
                     inputState={firstSendRatio} 
                     inputSetState={setFirstSendRatio} 
                     placeholder={"7:1"}
@@ -184,6 +190,7 @@ const Fields = ({count}) => {
                 </div>
             <div className="fieldHeader">Full Desk or Recruiter Activity Metric</div>
                 <InputField 
+                    key={count + 7}
                     inputState={candidateRatio} 
                     inputSetState={setCandidateRatio} 
                     placeholder={"2:1"}

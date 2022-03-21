@@ -2,7 +2,9 @@ import React, {useState, useEffect, useRef} from "react";
 
 const InputField = ({ inputState, inputSetState, placeholder, dataType }) => {
     const [isEditing, setIsEditing] = useState(true);
+
     const mounted = useRef(null);
+    let active = document.activeElement;
 
     useEffect(() => {
         mounted.current = true;
@@ -32,7 +34,8 @@ const InputField = ({ inputState, inputSetState, placeholder, dataType }) => {
     // const handleKeyDown = (event) => {
     //     switch( event.keyCode ) {
     //         case 13:
-    //             setIsEditing(false);
+    //             // setIsEditing(false);
+    //             console.log()
     //             break;
     //         default: 
     //             break;

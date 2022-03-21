@@ -143,10 +143,7 @@ code {
 .fieldInputBlur {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
-  /* background-color: white; */
-  /* border-radius: .5em; */
-  color: #f57b08;
+  color: #f58e08;
   font-size: 1.5em;
   font-weight: 600;
   letter-spacing: 0.10em;
@@ -157,11 +154,8 @@ code {
 .fieldOutput {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
-  /* background-color: white(88, 88, 88); */
   color: gold;
   border-radius: .2em;
-  /* border: solid #f57b08; */
   width: 5em;
   font-size: 2em;
   font-weight: 600;
