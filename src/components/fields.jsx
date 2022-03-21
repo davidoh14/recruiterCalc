@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import InputField from "./inputField";
 
 const Fields = ({count}) => {
 
@@ -29,19 +30,6 @@ const Fields = ({count}) => {
         setWeeklyNewReqs(quarterNewReqs / ratioNewReqs)
     }, [quarterNewReqs, ratioNewReqs])
 
-    // useEffect(() => {
-        // return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(e.target.value)
-    // })
-
-    // function dollarFormatter(number) {
-    //     let formatter = new Intl.NumberFormat("en-US", {
-    //         style: "currency",
-    //         currency: "USD"
-    //     })
-
-    //     return formatter.format(number)
-    // }
-
     const [firstSendRatio, setFirstSendRatio] = useState('');
     const [quarterSendOuts, setQuarterSendOuts] = useState('');
     const [weeklySendOuts, setWeeklySendOuts] = useState('');
@@ -67,43 +55,35 @@ const Fields = ({count}) => {
         setWeeklyCandidate(quarterCandidate / 13)
     }, [quarterCandidate])
 
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
 
     return (
         <div className="fieldSection df fdc">
-            <div className="fieldHeader">{'Q' + `${count}`}</div>
+            <div className="fieldHeader nobt">{'Q' + `${count}`}</div>
                 <div className="field">
-                    <input 
-                        type="text" 
-                        // value={dollarFormatter(goal)} 
-                        value={goal}
-                        // onChange={(e) => setGoal(parseInt(e.target.value, 10).toLocaleString('en-US'))} 
-                        onChange={(e) => setGoal(e.target.value)}
-                        pattern="[0-9]+"
-                        data-type="currency" 
-                        placeholder="$150,000"
-                    ></input>
+                    <InputField 
+                        inputState={goal} 
+                        inputSetState={setGoal} 
+                        placeholder={"$150,000"}
+                        dataType={"currency"}
+                    />
                 </div>
             <div className="fieldHeader">BD/Full Desk or Recruiter Target</div>
-                <div className="field">
-                    <input 
-                        type="number" 
-                        value={placementFee} 
-                        onChange={(e) => setPlacementFee(e.target.value)} 
-                        pattern="[0-9]" 
-                        data-type="currency" 
-                        placeholder="$20,000"
-                    />
-                </div>
-                <div className="field">
-                    <input 
-                        type="number" 
-                        value={revenue} 
-                        onChange={(e) => setRevenue(e.target.value)} 
-                        pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" 
-                        data-type="currency" 
-                        placeholder="$12,000"
-                    />
-                </div>
+                <InputField 
+                    inputState={placementFee} 
+                    inputSetState={setPlacementFee} 
+                    placeholder={"$20,000"}
+                    dataType={"currency"}
+                />
+                <InputField 
+                    inputState={revenue} 
+                    inputSetState={setRevenue} 
+                    placeholder={"$12,000"}
+                    dataType={"currency"}
+                />
                 <output className="field" type="text">
                     {(revPercentage === 'NaN%' || revPercentage === '0%') ? null : revPercentage}
                 </output>
@@ -111,22 +91,18 @@ const Fields = ({count}) => {
                     {(placementsTarget === 'Infinity' || placementsTarget === 'NaN') ? null : placementsTarget}
                 </output>
             <div className="fieldHeader">BD/Full Desk Outcome Metric</div>
-                <div className="field">
-                    <input 
-                        type="number" 
-                        value={percentagePlacements} 
-                        placeholder={"100%"}
-                        onChange={(e) => setPercentagePlacements(e.target.value)}
-                    />
-                </div>
-                <div className="field">
-                    <input 
-                        type="number"
-                        value={ratioNewReqs}
-                        placeholder={"4:1"}
-                        onChange={(e) => setRatioNewReqs(e.target.value)}
-                    />
-                </div>
+                <InputField 
+                    inputState={percentagePlacements} 
+                    inputSetState={setPercentagePlacements} 
+                    placeholder={"100%"}
+                    dataType={"percentage"}
+                />
+                <InputField 
+                    inputState={ratioNewReqs} 
+                    inputSetState={setRatioNewReqs} 
+                    placeholder={"4:1"}
+                    dataType={"ratio"}
+                />
                 <output className="field">
                     {isNaN(quarterNewReqs) ? null : quarterNewReqs}
                 </output>
@@ -134,14 +110,12 @@ const Fields = ({count}) => {
                     {isNaN(weeklyNewReqs) ? null : weeklyNewReqs}
                 </output>
             <div className="fieldHeader">Full Desk or Recruiter Outcome Metric</div>
-                <div className="field">
-                    <input 
-                        type="number"
-                        value={firstSendRatio}
-                        placeholder={"7:1"}
-                        onChange={(e) => setFirstSendRatio(e.target.value)}
-                    ></input>
-                </div>
+                <InputField 
+                    inputState={firstSendRatio} 
+                    inputSetState={setFirstSendRatio} 
+                    placeholder={"7:1"}
+                    dataType={"ratio"}
+                />
                 <output className="field">
                     {isNaN(quarterSendOuts) ? null : Math.round((quarterSendOuts) * 100) / 100}
                 </output>
@@ -149,14 +123,12 @@ const Fields = ({count}) => {
                     {isNaN(weeklySendOuts) ? null : Math.round((weeklySendOuts) * 100) / 100}
                 </output>
             <div className="fieldHeader">Full Desk or Recruiter Activity Metric</div>
-                <div className="field">
-                    <input 
-                        type="number"
-                        value={candidateRatio}
-                        placeholder={"2:1"}
-                        onChange={(e) => setCandidateRatio(e.target.value)}
-                    ></input>
-                </div>
+                <InputField 
+                    inputState={candidateRatio} 
+                    inputSetState={setCandidateRatio} 
+                    placeholder={"2:1"}
+                    dataType={"ratio"}
+                />
                 <output className="field">
                     {isNaN(quarterCandidate) ? null : Math.round((quarterCandidate) * 100) / 100}
                 </output>

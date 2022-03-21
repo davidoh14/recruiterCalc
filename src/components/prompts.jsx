@@ -3,13 +3,13 @@ import React from "react";
 const Prompts = () => {
     return (
         <div className="promptHalf df fdc">
-            <div className="secHeader">Quarterly Revenue Goal</div>
+            <div className="secHeader nobt">Quarterly Revenue Goal</div>
             <div className="prompt">
                 <div className="promptText">
                     Target Quarterly Billings Goal (Split Adjusted if you share revenue with BD/AM or Recruiter)
                 </div>
             </div>
-            <div className="secHeader">Calculate: # of Placements Required to Reach Quarterly Goal</div>
+            <div className="secHeader"># of Placements Required</div>
             <div className="prompt">
                 <div className="promptText">
                     Average Historical Total Fee Per Placement    
@@ -30,7 +30,7 @@ const Prompts = () => {
                     Target # of Placements Required During Quarter (Split Adjusted)
                 </div>
             </div>
-            <div className="secHeader">Calculate: # of New Req's (Job Order/Searches) Required to Reach Quarterly Goal</div>
+            <div className="secHeader"># of New Req's (Job Order/Searches) Required</div>
             <div className="prompt">
                 <div className="promptText">
                     Target Percentage of Placements as The BD (Req. Owner)
@@ -51,7 +51,7 @@ const Prompts = () => {
                     Target # of New Req's Required per Week
                 </div>
             </div>
-            <div className="secHeader">Calculate: # of 1st Send Outs (Cand./Client 1st Interview) to Reach Quarterly Goal </div>
+            <div className="secHeader"># of 1st Send Outs (Cand./Client 1st Interview) </div>
             <div className="prompt">
                 <div className="promptText">
                     Your Ratio of 1st Send Outs: Placements
@@ -67,7 +67,7 @@ const Prompts = () => {
                     Target # of 1st Send Outs Required per Week          
                 </div>
             </div>
-            <div className="secHeader">Calculate: # of Candidate Submissions Required to Reach Quarterly Goal</div>
+            <div className="secHeader"># of Candidate Submissions Required</div>
             <div className="prompt">
                 <div className="promptText">
                     Your Ratio: Candidate Subs: 1st Send Outs
