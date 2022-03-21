@@ -10,11 +10,18 @@ const Fields = ({count}) => {
     const [placementsTarget, setPlacementsTarget] = useState('');
     
     useEffect(() => {
-        setRevPercentage((revenue / placementFee * 100).toString() + '%')
+        if (revenue.length > 1 && placementFee.length > 1) {
+            let revPercentageChecked = decimalCheckTwo(revenue/placementFee * 100)
+            setRevPercentage((revPercentageChecked).toString() + '%')
+        }
     }, [placementFee, revenue])
 
     useEffect(() => {
-        setPlacementsTarget((goal / revenue).toString())
+        if (goal.length > 1 && revenue.length > 1){
+            let placementsTargetChecked = decimalCheckOne(goal/revenue)
+            setPlacementsTarget((placementsTargetChecked).toString())
+        }
+        // setPlacementsTarget((goal / revenue).toString())
     }, [goal, revenue])
 
     const [percentagePlacements, setPercentagePlacements] = useState('');
@@ -23,11 +30,17 @@ const Fields = ({count}) => {
     const [weeklyNewReqs, setWeeklyNewReqs] = useState('');
 
     useEffect(() => {
-        setQuarterNewReqs(placementsTarget * ratioNewReqs * percentagePlacements / 100)
+        // if (placementsTarget.length > 1 && ratioNewReqs.length > 1 && percentagePlacements.length > 1){
+            let quarterNewReqsChecked = decimalCheckOne(placementsTarget * ratioNewReqs * percentagePlacements / 100)
+            setQuarterNewReqs(quarterNewReqsChecked.toString())
+        // }
     }, [placementsTarget, ratioNewReqs, percentagePlacements])
 
     useEffect(() => {
-        setWeeklyNewReqs(quarterNewReqs / ratioNewReqs)
+        // if (quarterNewReqs.length > 1 && ratioNewReqs.length > 1){
+            let weeklyNewReqsChecked = decimalCheckOne(quarterNewReqs / ratioNewReqs)
+            setWeeklyNewReqs(weeklyNewReqsChecked.toString())
+        // }
     }, [quarterNewReqs, ratioNewReqs])
 
     const [firstSendRatio, setFirstSendRatio] = useState('');
@@ -35,11 +48,17 @@ const Fields = ({count}) => {
     const [weeklySendOuts, setWeeklySendOuts] = useState('');
 
     useEffect(() => {
-        setQuarterSendOuts(placementsTarget * firstSendRatio)
+        // if (placementsTarget.length > 1 && firstSendRatio.length > 1){
+            let quarterSendOutsChecked = decimalCheckOne(placementsTarget * firstSendRatio)
+            setQuarterSendOuts(quarterSendOutsChecked.toString())
+        // }
     }, [placementsTarget, firstSendRatio])
 
     useEffect(() => {
-        setWeeklySendOuts(quarterSendOuts / 13)
+        // if (quarterSendOuts.length > 1) {
+            let weeklySendOutsChecked = decimalCheckOne(quarterSendOuts / 13)
+            setWeeklySendOuts(weeklySendOutsChecked.toString())
+        // }
     }, [quarterSendOuts])
 
     
@@ -48,17 +67,46 @@ const Fields = ({count}) => {
     const [weeklyCandidate, setWeeklyCandidate] = useState('');
 
     useEffect(() => {
-        setQuarterCandidate(candidateRatio * quarterSendOuts)
+        // if (candidateRatio.length > 1 && quarterSendOuts.length > 1 ){
+            let quarterCandidatesChecked = decimalCheckOne(candidateRatio * quarterSendOuts)
+            setQuarterCandidate(quarterCandidatesChecked.toString())
+        // }
     }, [candidateRatio, quarterSendOuts])
 
     useEffect(() => {
-        setWeeklyCandidate(quarterCandidate / 13)
+        // if (quarterCandidate.length > 1) {
+            let weeklyCandidateChecked = decimalCheckOne(quarterCandidate / 13)
+            setWeeklyCandidate(weeklyCandidateChecked.toString())
+        // }
     }, [quarterCandidate])
 
-    const formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-    });
+    const decimalCheckOne = (number) => {
+        if (!!(number % 1)) {
+            return number.round(1)
+        } else {
+            return number
+        }
+    }
+
+    const decimalCheckTwo = (number) => {
+        // let str = number.toString();
+        // let decimals = str.split('.')[1];
+
+        // switch (decimals) {
+        //     case (decimals.length > 2):
+        //         return number.round(2)
+        // }
+        if (!!(number % 1)){
+            return number.round(2)
+        } else {
+            return number
+        }
+    }
+
+    Number.prototype.round = function(n) {
+        const d = Math.pow(10, n);
+        return Math.round((this + Number.EPSILON) * d) / d;
+    }
 
     return (
         <div className="fieldSection df fdc">
@@ -84,12 +132,16 @@ const Fields = ({count}) => {
                     placeholder={"$12,000"}
                     dataType={"currency"}
                 />
-                <output className="field" type="text">
-                    {(revPercentage === 'NaN%' || revPercentage === '0%') ? null : revPercentage}
-                </output>
-                <output className="field" type="text">
-                    {(placementsTarget === 'Infinity' || placementsTarget === 'NaN') ? null : placementsTarget}
-                </output>
+                <div className="field">
+                    <output className="fieldOutput" type="text">
+                        {(revPercentage === 'NaN%' || revPercentage === '0%') ? null : revPercentage}
+                    </output>
+                </div>
+                <div className="field">
+                    <output className="fieldOutput" type="text">
+                        {(placementsTarget === 'Infinity' || placementsTarget === 'NaN') ? null : placementsTarget}
+                    </output>
+                </div>
             <div className="fieldHeader">BD/Full Desk Outcome Metric</div>
                 <InputField 
                     inputState={percentagePlacements} 
@@ -103,12 +155,16 @@ const Fields = ({count}) => {
                     placeholder={"4:1"}
                     dataType={"ratio"}
                 />
-                <output className="field">
-                    {isNaN(quarterNewReqs) ? null : quarterNewReqs}
-                </output>
-                <output className="field">
-                    {isNaN(weeklyNewReqs) ? null : weeklyNewReqs}
-                </output>
+                <div className="field">
+                    <output className="fieldOutput">
+                        {isNaN(quarterNewReqs) ? null : quarterNewReqs}
+                    </output>
+                </div>
+                <div className="field">
+                    <output className="fieldOutput">
+                        {isNaN(weeklyNewReqs) ? null : weeklyNewReqs}
+                    </output>
+                </div>
             <div className="fieldHeader">Full Desk or Recruiter Outcome Metric</div>
                 <InputField 
                     inputState={firstSendRatio} 
@@ -116,12 +172,16 @@ const Fields = ({count}) => {
                     placeholder={"7:1"}
                     dataType={"ratio"}
                 />
-                <output className="field">
-                    {isNaN(quarterSendOuts) ? null : Math.round((quarterSendOuts) * 100) / 100}
-                </output>
-                <output className="field">
-                    {isNaN(weeklySendOuts) ? null : Math.round((weeklySendOuts) * 100) / 100}
-                </output>
+                <div className="field">
+                    <output className="fieldOutput">
+                        {isNaN(quarterSendOuts) ? null : Math.round((quarterSendOuts) * 100) / 100}
+                    </output>
+                </div>
+                <div className="field">
+                    <output className="fieldOutput">
+                        {isNaN(weeklySendOuts) ? null : Math.round((weeklySendOuts) * 100) / 100}
+                    </output>
+                </div>
             <div className="fieldHeader">Full Desk or Recruiter Activity Metric</div>
                 <InputField 
                     inputState={candidateRatio} 
@@ -129,12 +189,16 @@ const Fields = ({count}) => {
                     placeholder={"2:1"}
                     dataType={"ratio"}
                 />
-                <output className="field">
-                    {isNaN(quarterCandidate) ? null : Math.round((quarterCandidate) * 100) / 100}
-                </output>
-                <output className="field">
-                    {isNaN(weeklyCandidate) ? null : Math.round((weeklyCandidate) * 100) / 100}
-                </output>
+                <div className="field">
+                    <output className="fieldOutput">
+                        {isNaN(quarterCandidate) ? null : Math.round((quarterCandidate) * 100) / 100}
+                    </output>
+                </div>
+                <div className="field">
+                    <output className="fieldOutput">
+                        {isNaN(weeklyCandidate) ? null : Math.round((weeklyCandidate) * 100) / 100}
+                    </output>
+                </div>
         </div>
         
     )

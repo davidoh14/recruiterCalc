@@ -122,8 +122,7 @@ code {
 .field{
   display: flex;
   height: 3em;
-  /* min-height: 2em; */
-  /* padding: 1em 0em 1em 0em; */
+  max-height: 3em;
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -134,8 +133,15 @@ code {
   /* justify-content: center; */
   letter-spacing: 0.10em;
   font-weight: 600;
+  /* font-size: 1.2em; */
+}
+
+.fieldOutput {
+  display: flex;
+  align-items: center;
   font-size: 1.2em;
-  /* height: 1.5em; */
+  font-weight: 600;
+  letter-spacing: 0.10em;
 }
 
 .success{

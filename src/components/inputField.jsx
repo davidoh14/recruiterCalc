@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 
 const InputField = ({ inputState, inputSetState, placeholder, dataType }) => {
-    const [isEditing, setIsEditing] = useState(false);
+    const [isEditing, setIsEditing] = useState(true);
     const ENTER_KEY = 13;
 
     const currencyFormatter = new Intl.NumberFormat('en-US', {
@@ -20,36 +20,38 @@ const InputField = ({ inputState, inputSetState, placeholder, dataType }) => {
         }
     }
 
-    useEffect(() => {
-        document.addEventListener("keydown", handleKeyDown)
-    }, [])
+    // useEffect(() => {
+    //     document.addEventListener("keydown", handleKeyDown)
+    // }, [])
+
     
-    const handleKeyDown = (event) => {
-        switch( event.keyCode ) {
-            case ENTER_KEY:
-                setIsEditing(false);
-                break;
-            default: 
-                break;
-        }
-    }
+    // const handleKeyDown = (event) => {
+    //     switch( event.keyCode ) {
+    //         case ENTER_KEY:
+    //             setIsEditing(false);
+    //             break;
+    //         default: 
+    //             break;
+    //     }
+    // }
 
     return (
         <div className="field">
             {
                 (isEditing === true) ? 
                     <input
-                        autoFocus
+                        // autoFocus
                         type="number" 
                         className="fieldInput"
                         value={inputState}
                         onChange={(e) => inputSetState(e.target.value)}
                         onBlur={() => setIsEditing(false)}
                         placeholder={placeholder}
+                        // size="10"
                     ></input> 
                     : 
                     <div 
-                        className="fieldInputBlur"
+                        className="fieldOutput"
                         onClick={() => setIsEditing(true)}
                     >
                         {formatter(inputState)}
