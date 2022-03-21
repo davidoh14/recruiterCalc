@@ -54,11 +54,10 @@ const InputField = ({ inputState, inputSetState, placeholder, dataType }) => {
                         onChange={(e) => inputSetState(e.target.value)}
                         onBlur={() => setIsEditing(false)}
                         placeholder={placeholder}
-                        size="30"
                     ></input> 
                     : 
                     <div 
-                        className="fieldInputBlur"
+                        className={(inputState === '') ? "fieldInputBlurEmpty" : "fieldInputBlur"}
                         onClick={() => setIsEditing(true)}
                     >
                         {formatter(inputState)}

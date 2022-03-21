@@ -9,6 +9,10 @@ code {
     monospace;
 }
 
+.App {
+  background-color: #0c57ad;
+}
+
 .navBar{
   font-family: Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
   font-weight: 50;
@@ -50,6 +54,13 @@ code {
   flex-direction: column
 }
 
+.jcfe{
+  justify-content: flex-end;
+}
+
+.pad {
+  padding: 0em 1em 0em 1em;
+}
 
 .navBar {
   font-size: 2em;
@@ -129,21 +140,24 @@ code {
 }
 
 .fieldInput{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   display: flex;
   /* align-items: center; */
-  /* justify-content: center; */
+  justify-content: center;
   letter-spacing: 0.10em;
   font-weight: 600;
-  border-radius: .5em;
-  max-width: 7em;
+  border-radius: .3em;
+  max-width: 7.9em;
   height: 2.5em;
   font-size: 1.2em;
 }
 
 .fieldInputBlur {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   display: flex;
   align-items: center;
-  color: #f58e08;
+  justify-content: center;
+  color: #F54C08;
   font-size: 1.5em;
   font-weight: 600;
   letter-spacing: 0.10em;
@@ -151,9 +165,25 @@ code {
   height: 2em;
 }
 
-.fieldOutput {
+.fieldInputBlurEmpty {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   display: flex;
   align-items: center;
+  justify-content: center;
+  color: #f50808;
+  font-size: 1.5em;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  width: 7em;
+  height: 2em;
+  text-decoration: underline wavy 2px;
+}
+
+.fieldOutput {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: gold;
   border-radius: .2em;
   width: 5em;
@@ -172,21 +202,24 @@ code {
 }
 
 .addQ{
-  position: absolute;
-  transform: translate(1665px);
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  position: relative;
   font-size: 21px;
   width: 28px;
 }
 
 .subQ{
-  position: absolute;
-  transform: translate(1665px, 100%);
+  display: flex;
+    justify-content: center;
+  align-items:center;
+  position: relative;
   font-size: 21px;
   width: 28px;
 }
 
 .screenshot{
-  position: absolute;
-  transform: translate()
+  display: flex;
 }
 

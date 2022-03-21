@@ -21,7 +21,6 @@ const Fields = ({count}) => {
             let placementsTargetChecked = decimalCheckOne(goal/revenue)
             setPlacementsTarget((placementsTargetChecked).toString())
         }
-        // setPlacementsTarget((goal / revenue).toString())
     }, [goal, revenue])
 
     const [percentagePlacements, setPercentagePlacements] = useState('');
@@ -30,17 +29,13 @@ const Fields = ({count}) => {
     const [weeklyNewReqs, setWeeklyNewReqs] = useState('');
 
     useEffect(() => {
-        // if (placementsTarget.length > 1 && ratioNewReqs.length > 1 && percentagePlacements.length > 1){
-            let quarterNewReqsChecked = decimalCheckOne(placementsTarget * ratioNewReqs * percentagePlacements / 100)
-            setQuarterNewReqs(quarterNewReqsChecked.toString())
-        // }
+        let quarterNewReqsChecked = decimalCheckOne(placementsTarget * ratioNewReqs * percentagePlacements / 100)
+        setQuarterNewReqs(quarterNewReqsChecked.toString())
     }, [placementsTarget, ratioNewReqs, percentagePlacements])
 
     useEffect(() => {
-        // if (quarterNewReqs.length > 1 && ratioNewReqs.length > 1){
-            let weeklyNewReqsChecked = decimalCheckOne(quarterNewReqs / ratioNewReqs)
-            setWeeklyNewReqs(weeklyNewReqsChecked.toString())
-        // }
+        let weeklyNewReqsChecked = decimalCheckOne(quarterNewReqs / ratioNewReqs)
+        setWeeklyNewReqs(weeklyNewReqsChecked.toString())
     }, [quarterNewReqs, ratioNewReqs])
 
     const [firstSendRatio, setFirstSendRatio] = useState('');
@@ -48,17 +43,13 @@ const Fields = ({count}) => {
     const [weeklySendOuts, setWeeklySendOuts] = useState('');
 
     useEffect(() => {
-        // if (placementsTarget.length > 1 && firstSendRatio.length > 1){
-            let quarterSendOutsChecked = decimalCheckOne(placementsTarget * firstSendRatio)
-            setQuarterSendOuts(quarterSendOutsChecked.toString())
-        // }
+        let quarterSendOutsChecked = decimalCheckOne(placementsTarget * firstSendRatio)
+        setQuarterSendOuts(quarterSendOutsChecked.toString())
     }, [placementsTarget, firstSendRatio])
 
     useEffect(() => {
-        // if (quarterSendOuts.length > 1) {
             let weeklySendOutsChecked = decimalCheckOne(quarterSendOuts / 13)
             setWeeklySendOuts(weeklySendOutsChecked.toString())
-        // }
     }, [quarterSendOuts])
 
     
@@ -67,17 +58,13 @@ const Fields = ({count}) => {
     const [weeklyCandidate, setWeeklyCandidate] = useState('');
 
     useEffect(() => {
-        // if (candidateRatio.length > 1 && quarterSendOuts.length > 1 ){
             let quarterCandidatesChecked = decimalCheckOne(candidateRatio * quarterSendOuts)
             setQuarterCandidate(quarterCandidatesChecked.toString())
-        // }
     }, [candidateRatio, quarterSendOuts])
 
     useEffect(() => {
-        // if (quarterCandidate.length > 1) {
             let weeklyCandidateChecked = decimalCheckOne(quarterCandidate / 13)
             setWeeklyCandidate(weeklyCandidateChecked.toString())
-        // }
     }, [quarterCandidate])
 
     const decimalCheckOne = (number) => {
